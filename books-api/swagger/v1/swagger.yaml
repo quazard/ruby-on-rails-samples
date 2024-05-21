@@ -1,0 +1,113 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/authors":
+    get:
+      summary: Returns all authors
+      tags:
+      - Authors
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/author"
+    post:
+      summary: Creates an author
+      tags:
+      - Authors
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/author"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/author"
+  "/authors/{id}":
+    get:
+      summary: Returns an author
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/author"
+    patch:
+      summary: Updates an author
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/author"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/author"
+    delete:
+      summary: Deletes an author
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: no content
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
+components:
+  schemas:
+    author:
+      type: object
+      properties:
+        name:
+          type: string
+    book:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          "$ref": "#/components/schemas/author"
+        published:
+          type: date
+        pages:
+          type: integer
