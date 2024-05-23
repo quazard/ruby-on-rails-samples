@@ -1,0 +1,12 @@
+
+<turbo_frame id="books_frame">
+  <div id="actions">
+    <%= button_to "Add Book", new_book_path, class: "btn btn-primary" %>
+  </div>
+
+  <div id="books">
+    <% @books.each do |book| %>
+      <%= render partial: "books/book_card", locals: { book: book } %>
+    <% end %>
+  </div>
+</turbo_frame>

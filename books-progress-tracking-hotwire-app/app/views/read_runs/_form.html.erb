@@ -1,0 +1,27 @@
+<%= form_with(model: read_run) do |form| %>
+  <% if read_run.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(read_run.errors.count, "error") %> prohibited this read_run from being saved:</h2>
+
+      <ul>
+        <% read_run.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :run_number, style: "display: block" %>
+    <%= form.number_field :run_number %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

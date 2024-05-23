@@ -1,0 +1,22 @@
+<%= form_with(model: read_session) do |form| %>
+  <% if read_session.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(read_session.errors.count, "error") %> prohibited this read_session from being saved:</h2>
+
+      <ul>
+        <% read_session.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :read_pages, style: "display: block" %>
+    <%= form.text_field :read_pages %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

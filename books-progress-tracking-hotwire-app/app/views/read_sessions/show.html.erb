@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @read_session %>
+
+<div>
+  <%= link_to "Edit this read session", edit_read_session_path(@read_session) %> |
+  <%= link_to "Back to read sessions", read_sessions_path %>
+
+  <%= button_to "Destroy this read session", @read_session, method: :delete %>
+</div>

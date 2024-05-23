@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @read_run %>
+
+<div>
+  <%= link_to "Edit this read run", edit_read_run_path(@read_run) %> |
+  <%= link_to "Back to read runs", read_runs_path %>
+
+  <%= button_to "Destroy this read run", @read_run, method: :delete %>
+</div>
