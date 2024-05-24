@@ -2,14 +2,19 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "books#index"
   
-  resources :books do
+  resources :books, except: [ :index ]
+
+  resources :read_runs do
     member do
       post :new
     end
   end
 
-  resources :read_sessions
-  resources :read_runs
+  resources :read_sessions do
+    member do
+      post :new
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

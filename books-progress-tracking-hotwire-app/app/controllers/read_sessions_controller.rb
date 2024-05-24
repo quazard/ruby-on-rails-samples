@@ -13,6 +13,12 @@ class ReadSessionsController < ApplicationController
   # GET /read_sessions/new
   def new
     @read_session = ReadSession.new
+    @read_run = ReadRun.find(params[:read_run_id])
+    @read_session.read_run_id = params[:read_run_id]
+
+    respond_to do |format|
+      format.turbo_stream { render :new, locals: { read_session: @read_session, read_run: @read_run } }
+    end
   end
 
   # GET /read_sessions/1/edit
@@ -25,10 +31,10 @@ class ReadSessionsController < ApplicationController
 
     respond_to do |format|
       if @read_session.save
-        format.html { redirect_to read_session_url(@read_session), notice: "Read session was successfully created." }
+        format.turbo_stream { render :create, locals: { read_session: @read_session } }
         format.json { render :show, status: :created, location: @read_session }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { read_session: @read_session } }
         format.json { render json: @read_session.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +71,6 @@ class ReadSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def read_session_params
-      params.require(:read_session).permit(:read_pages)
+      params.require(:read_session).permit(:read_pages, :read_run_id)
     end
 end

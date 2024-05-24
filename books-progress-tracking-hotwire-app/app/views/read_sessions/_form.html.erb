@@ -1,22 +1,17 @@
-<%= form_with(model: read_session) do |form| %>
-  <% if read_session.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(read_session.errors.count, "error") %> prohibited this read_session from being saved:</h2>
-
-      <ul>
-        <% read_session.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= turbo_frame_tag "new_read_session_#{dom_id read_run}" do %>
+  <%= form_with(model: read_session) do |form| %>
+    <li id="<%= dom_id read_session %>" class="list-group-item">
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group">
+            <%= form.number_field :read_pages, class: "form-control", placeholder: "Read pages" %>
+          </div>
+        </div>
+        <div class="col-6 text-end">
+          <%= form.hidden_field :read_run_id, value: read_session.read_run_id %>
+          <%= form.submit class: "btn btn-success btn-sm" %>
+        </div>
+      </div>
+    </li>
   <% end %>
-
-  <div>
-    <%= form.label :read_pages, style: "display: block" %>
-    <%= form.text_field :read_pages %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

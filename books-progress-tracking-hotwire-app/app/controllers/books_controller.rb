@@ -8,18 +8,11 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.update('books_frame', partial: "book", locals: { book: @book }) }
-    end
   end
 
   # GET /books/new
   def new
     @book = Book.new
-
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.update('books_frame', partial: "form", locals: { book: @book }) }
-    end
   end
 
   # GET /books/1/edit
@@ -72,6 +65,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :pages, :published, :image)
+      params.require(:book).permit(:title, :author, :pages, :published, :image)
     end
 end

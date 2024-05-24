@@ -1,22 +1,11 @@
-<div id="<%= dom_id book %>">
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
-
-  <p>
-    <strong>Pages:</strong>
-    <%= book.pages %>
-  </p>
-
-  <p>
-    <strong>Published:</strong>
-    <%= book.published %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <%= book.image %>
-  </p>
-
+<div id="<%= dom_id book %>" class="card">
+  <img class="rounded" src="<%= book.image %>" alt="book image" />
+  <div class="card-body">
+    <p class="card-text">
+      <div>Title: <%= book.title %></div>
+      <div>Author: <%= book.author %></div>
+      <div>Pages: <%= book.pages %></div>
+      <div>Published: <%= book.published %></div>
+    </p>
+  </div>
 </div>

@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "sessions_#{dom_id read_session.read_run}", partial: "read_sessions/read_session", locals: { read_session: read_session } %>
+<%= turbo_stream.remove "new_read_session_#{dom_id read_session.read_run}" %>

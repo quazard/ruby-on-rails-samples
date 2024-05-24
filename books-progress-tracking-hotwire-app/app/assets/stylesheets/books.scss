@@ -1,15 +1,16 @@
 .top-spacer {
-  margin: 2.5em 0;
+  margin: 2em 0;
+}
+
+#actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: right;
+  margin: 1em 0;
 }
 
 #books_frame {
-  #actions {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: right;
-  }
-
   #books {
     display: flex;
     flex-direction: row;

@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @book.title %></li>
+  </ol>
+</nav>
 
-<%= render @book %>
-
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-
-  <%= button_to "Destroy this book", @book, method: :delete %>
+<div class="content">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "books/book", locals: { book: @book } %>
+    </div>
+    <div class="col-md-9">
+      <%= render template: "read_runs/index", locals: { read_runs: @book.read_runs, book_id: @book.id } %>
+    </div>
+  </div>
 </div>

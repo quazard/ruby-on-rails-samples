@@ -1,14 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Read runs</h1>
-
-<div id="read_runs">
-  <% @read_runs.each do |read_run| %>
-    <%= render read_run %>
-    <p>
-      <%= link_to "Show this read run", read_run %>
-    </p>
-  <% end %>
+<div id="actions">
+  <%= button_to "Add Read Run", new_read_run_path(book_id: book_id), class: "btn btn-primary"%>
 </div>
 
-<%= link_to "New read run", new_read_run_path %>
+<turbo-frame id="read_runs">
+  <% read_runs.order(created_at: :desc).each do |read_run| %>
+    <%= render read_run %>
+  <% end %>
+</turbo-frame>

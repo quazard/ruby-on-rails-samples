@@ -1,5 +1,5 @@
 <div class="book">
-  <%= link_to book, data: { turbo_method: :get, turbo_stream: true } do %>
+  <%= link_to book do %>
     <div class="card">
       <img class="rounded" src="<%= book.image %>" alt="book image" />
       <div class="card-body">

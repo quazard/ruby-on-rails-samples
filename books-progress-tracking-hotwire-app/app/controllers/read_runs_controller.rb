@@ -3,7 +3,7 @@ class ReadRunsController < ApplicationController
 
   # GET /read_runs or /read_runs.json
   def index
-    @read_runs = ReadRun.all
+    @read_runs = ReadRun.all.order(created_at: :desc)
   end
 
   # GET /read_runs/1 or /read_runs/1.json
@@ -13,6 +13,11 @@ class ReadRunsController < ApplicationController
   # GET /read_runs/new
   def new
     @read_run = ReadRun.new
+    @read_run.book_id = params[:book_id]
+
+    respond_to do |format|
+      format.turbo_stream { render :new, locals: { read_run: @read_run } }
+    end
   end
 
   # GET /read_runs/1/edit
@@ -25,10 +30,10 @@ class ReadRunsController < ApplicationController
 
     respond_to do |format|
       if @read_run.save
-        format.html { redirect_to read_run_url(@read_run), notice: "Read run was successfully created." }
+        format.turbo_stream { render :create, locals: { read_run: @read_run } }
         format.json { render :show, status: :created, location: @read_run }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { read_run: @read_run } }
         format.json { render json: @read_run.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +70,6 @@ class ReadRunsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def read_run_params
-      params.require(:read_run).permit(:run_number, :status)
+      params.require(:read_run).permit(:run_number, :status, :book_id)
     end
 end
