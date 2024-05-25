@@ -25,10 +25,10 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
+        format.turbo_stream { render :create, locals: { book: @book } }
         format.json { render :show, status: :created, location: @book }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { book: @book } }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end

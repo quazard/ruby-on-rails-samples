@@ -21,6 +21,11 @@
 !/log/.keep
 !/tmp/.keep
 
+# ignore built assets and node modules
+/node_modules
+/node_modules/*
+/app/assets/builds
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/

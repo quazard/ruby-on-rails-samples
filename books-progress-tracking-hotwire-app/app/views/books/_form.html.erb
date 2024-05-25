@@ -14,34 +14,34 @@
         </div>
       <% end %>
     
-      <div class="mb-3 col-6">
+      <div class="mb-3">
         <%= form.label :title, class: "form-label" %>
         <%= form.text_field :title, class: "form-control" %>
       </div>
     
-      <div class="mb-3 col-6">
+      <div class="mb-3">
         <%= form.label :author, class: "form-label" %>
         <%= form.text_field :author, class: "form-control" %>
       </div>
     
-      <div class="mb-3 col-6">
+      <div class="mb-3">
         <%= form.label :pages, class: "form-label" %>
         <%= form.number_field :pages, class: "form-control" %>
       </div>
     
-      <div class="mb-3 col-6">
+      <div class="mb-3">
         <%= form.label :published, class: "form-label" %>
         <%= form.date_field :published, class: "form-control" %>
       </div>
     
-      <div class="mb-3 col-6">
+      <div class="mb-3">
         <%= form.label :image, class: "form-label" %>
         <%= form.text_field :image, class: "form-control" %>
       </div>
     
       <div class="mb-3">
-        <%= link_to "Cancel", root_path, data: { turbo_method: :get, turbo_stream: true }, class: "btn btn-secondary" %>
-        <%= form.submit "Create", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+        <%= form.submit "Create", class: "btn btn-primary", 'data-bs-dismiss': "modal" %>
       </div>
     <% end %>
   </div>

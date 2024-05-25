@@ -6,7 +6,7 @@
 
 <div>
   <div id="actions">
-    <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+    <%= link_to "Add Book", new_book_path, class: "btn btn-primary", data: { turbo_frame: "modal" } %>
   </div>
 
   <turbo_frame id="books_frame">
