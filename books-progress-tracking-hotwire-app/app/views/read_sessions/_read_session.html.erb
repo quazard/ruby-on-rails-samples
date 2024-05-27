@@ -1,10 +1,26 @@
 <li id="<%= dom_id read_session %>" class="list-group-item">
   <div class="row">
-    <div class="col-6">
-      Read pages: <%= read_session.read_pages %>
+    <div class="col-4">
+      <strong>Read pages:</strong> <%= read_session.read_pages %>
     </div>
     <div class="col-6">
-      Created at: <%= read_session.created_at %>
+      <strong>Recorded at:</strong> <%= read_session.created_at.strftime("%A %d, %B, %Y") %>
+    </div>
+    <div class="col-2 text-end">
+      <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+          <%= button_to edit_read_session_path(read_session), class: "btn btn-light btn-sm" do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </div>
+        <div class="col-4">
+          <%= button_to read_session_path(read_session), method: :delete, class: "btn btn-danger btn-sm" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </li>

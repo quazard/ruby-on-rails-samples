@@ -1,6 +1,8 @@
 class ReadSessionsController < ApplicationController
   before_action :set_read_session, only: %i[ show edit update destroy ]
 
+  helper ReadRunsHelper
+
   # GET /read_sessions or /read_sessions.json
   def index
     @read_sessions = ReadSession.all
@@ -23,6 +25,9 @@ class ReadSessionsController < ApplicationController
 
   # GET /read_sessions/1/edit
   def edit
+    respond_to do |format|
+      format.turbo_stream { render :edit, locals: { read_session: @read_session } }
+    end
   end
 
   # POST /read_sessions or /read_sessions.json
@@ -44,10 +49,10 @@ class ReadSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @read_session.update(read_session_params)
-        format.html { redirect_to read_session_url(@read_session), notice: "Read session was successfully updated." }
+        format.turbo_stream { render :update, locals: { read_session: @read_session } }
         format.json { render :show, status: :ok, location: @read_session }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render :update, status: :unprocessable_entity, locals: { read_session: @read_session } }
         format.json { render json: @read_session.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +63,7 @@ class ReadSessionsController < ApplicationController
     @read_session.destroy!
 
     respond_to do |format|
-      format.html { redirect_to read_sessions_url, notice: "Read session was successfully destroyed." }
+      format.turbo_stream { render :destroy, locals: { read_session: @read_session } }
       format.json { head :no_content }
     end
   end

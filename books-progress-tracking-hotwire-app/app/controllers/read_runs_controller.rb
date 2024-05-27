@@ -12,8 +12,11 @@ class ReadRunsController < ApplicationController
 
   # GET /read_runs/new
   def new
+    @book = Book.find(params[:book_id])
+    
     @read_run = ReadRun.new
-    @read_run.book_id = params[:book_id]
+    @read_run.run_number = @book.read_runs.count + 1
+    @read_run.book = @book
 
     respond_to do |format|
       format.turbo_stream { render :new, locals: { read_run: @read_run } }

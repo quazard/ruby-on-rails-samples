@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_book, only: %i[ edit update destroy ]
 
   # GET /books or /books.json
   def index
@@ -8,6 +8,8 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
+    # avoid n+1 queries
+    @book = Book.includes(read_runs: [ :read_sessions ]).find(params[:id])
   end
 
   # GET /books/new

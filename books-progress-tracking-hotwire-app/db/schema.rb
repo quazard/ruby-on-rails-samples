@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_163448) do
 
   create_table "read_runs", force: :cascade do |t|
     t.integer "run_number"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "book_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_163448) do
   end
 
   create_table "read_sessions", force: :cascade do |t|
-    t.string "read_pages"
+    t.integer "read_pages"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "read_run_id"

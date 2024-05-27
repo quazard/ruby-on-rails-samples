@@ -1,7 +1,7 @@
 class CreateReadSessions < ActiveRecord::Migration[7.1]
   def change
     create_table :read_sessions do |t|
-      t.string :read_pages
+      t.integer :read_pages
 
       t.timestamps
     end

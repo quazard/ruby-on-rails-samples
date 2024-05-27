@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :read_sessions do
     member do
       post :new
+      post :edit
     end
   end
 

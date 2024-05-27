@@ -1,0 +1,2 @@
+<%= turbo_stream.replace("#{dom_id read_session}", partial: "read_sessions/read_session", locals: { read_session: read_session }) %>
+<%= turbo_stream.update("progress_#{dom_id read_session.read_run}", partial: "read_runs/progress_bar", locals: { read_run: read_session.read_run, total_read_pages: get_total_read_pages(read_session.read_run) }) %>

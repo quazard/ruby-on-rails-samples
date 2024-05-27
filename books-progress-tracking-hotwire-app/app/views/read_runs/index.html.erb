@@ -3,7 +3,7 @@
 </div>
 
 <turbo-frame id="read_runs">
-  <% read_runs.order(created_at: :desc).each do |read_run| %>
-    <%= render read_run %>
+  <% read_runs.each do |read_run| %>
+    <%= render partial: "read_runs/read_run", locals: { read_run: read_run, total_read_pages: get_total_read_pages(read_run) } %>
   <% end %>
 </turbo-frame>

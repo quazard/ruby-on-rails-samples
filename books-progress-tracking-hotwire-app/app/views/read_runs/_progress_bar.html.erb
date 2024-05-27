@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "progress_#{dom_id read_run}" do %>
+  <% read_percentage = calculate_read_percentage(read_run, total_read_pages) %>
+  <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="<%= read_percentage %>" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: <%= read_percentage %>%"><%= read_percentage %>%</div>
+  </div>
+<% end %>

@@ -2,10 +2,26 @@
   <img class="rounded" src="<%= book.image %>" alt="book image" />
   <div class="card-body">
     <p class="card-text">
-      <div>Title: <%= book.title %></div>
-      <div>Author: <%= book.author %></div>
-      <div>Pages: <%= book.pages %></div>
-      <div>Published: <%= book.published %></div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Title:</td>
+            <td><%= book.title %></td>
+          </tr>
+          <tr>
+            <td>Author:</td>
+            <td><%= book.author %></td>
+          </tr>
+          <tr>
+            <td>Pages:</td>
+            <td><%= book.pages %></td>
+          </tr>
+          <tr>
+            <td>Published:</td>
+            <td><%= book.published %></td>
+          </tr>
+        </tbody>
+      </table>
     </p>
   </div>
 </div>
