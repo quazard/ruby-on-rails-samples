@@ -11,7 +11,7 @@
       <%= render partial: "books/book", locals: { book: @book } %>
     </div>
     <div class="col-md-9">
-      <%= render template: "read_runs/index", locals: { read_runs: @book.read_runs } %>
+      <%= render template: "read_runs/index", locals: { book: @book, read_runs: @book.read_runs } %>
     </div>
   </div>
 </div>

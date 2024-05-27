@@ -30,7 +30,7 @@ class BooksController < ApplicationController
         format.turbo_stream { render :create, locals: { book: @book } }
         format.json { render :show, status: :created, location: @book }
       else
-        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { book: @book } }
+        format.html { render :new, status: :unprocessable_entity, locals: { book: @book } }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end

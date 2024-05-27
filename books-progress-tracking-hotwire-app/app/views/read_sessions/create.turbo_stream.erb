@@ -1,3 +1,3 @@
 <%= turbo_stream.prepend "sessions_#{dom_id read_session.read_run}", partial: "read_sessions/read_session", locals: { read_session: read_session } %>
 <%= turbo_stream.update("progress_#{dom_id read_session.read_run}", partial: "read_runs/progress_bar", locals: { read_run: read_session.read_run, total_read_pages: get_total_read_pages(read_session.read_run) }) %>
-<%= turbo_stream.remove "new_read_session_#{dom_id read_session.read_run}" %>
+<%= turbo_stream.remove "read_session_form_#{dom_id read_session.read_run}" %>

@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_163448) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower(title)", name: "index_books_on_lower_title", unique: true
   end
 
   create_table "read_runs", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_163448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "book_id"
+    t.index ["book_id", "run_number"], name: "index_read_runs_on_book_id_and_run_number", unique: true
     t.index ["book_id"], name: "index_read_runs_on_book_id"
   end
 

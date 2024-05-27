@@ -8,5 +8,6 @@ class CreateReadRuns < ActiveRecord::Migration[7.1]
     end
 
     add_belongs_to :read_runs, :book
+    add_index :read_runs, [ :book_id, :run_number ], unique: true
   end
 end

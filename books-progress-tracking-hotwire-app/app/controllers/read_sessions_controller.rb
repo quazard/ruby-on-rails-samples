@@ -39,7 +39,7 @@ class ReadSessionsController < ApplicationController
         format.turbo_stream { render :create, locals: { read_session: @read_session } }
         format.json { render :show, status: :created, location: @read_session }
       else
-        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { read_session: @read_session } }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { read_session: @read_session, read_run: @read_session.read_run } }
         format.json { render json: @read_session.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class ReadSessionsController < ApplicationController
         format.turbo_stream { render :update, locals: { read_session: @read_session } }
         format.json { render :show, status: :ok, location: @read_session }
       else
-        format.turbo_stream { render :update, status: :unprocessable_entity, locals: { read_session: @read_session } }
+        format.turbo_stream { render :edit, status: :unprocessable_entity, locals: { read_session: @read_session, read_run: @read_session.read_run } }
         format.json { render json: @read_session.errors, status: :unprocessable_entity }
       end
     end

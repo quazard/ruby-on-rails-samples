@@ -1,2 +1,2 @@
-<%= turbo_stream.prepend "read_runs", partial: "read_runs/read_run", locals: { read_run: read_run } %>
-<%= turbo_stream.remove "new_read_run" %>
+<%= turbo_stream.prepend "read_runs", partial: "read_runs/read_run", locals: { read_run: read_run, total_read_pages: get_total_read_pages(read_run) } %>
+<%= turbo_stream.remove "read_run_form" %>

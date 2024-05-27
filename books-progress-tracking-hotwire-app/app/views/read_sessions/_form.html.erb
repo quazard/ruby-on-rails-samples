@@ -1,10 +1,10 @@
-<%= turbo_frame_tag "new_read_session_#{dom_id read_run}" do %>
+<%= turbo_frame_tag "read_session_form_#{dom_id read_run}" do %>
   <%= form_with(model: read_session) do |form| %>
     <li id="<%= dom_id read_session %>" class="list-group-item">
       <div class="row">
         <div class="col-6">
-          <div class="input-group">
-            <%= form.number_field :read_pages, class: "form-control", placeholder: "Read pages" %>
+          <div class="form-group">
+            <%= form.number_field :read_pages, class: "form-control #{is_field_invalid?(read_session, :read_pages)}", placeholder: "Read pages" %>
           </div>
         </div>
         <div class="col-6 text-end">

@@ -9,5 +9,7 @@ class CreateBooks < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    add_index :books, "lower(title)", unique: true
   end
 end

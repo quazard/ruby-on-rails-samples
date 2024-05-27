@@ -1,21 +1,21 @@
-<%= turbo_frame_tag "new_read_run" do %>
+<%= turbo_frame_tag "read_run_form" do %>
   <%= form_with(model: read_run) do |form| %>
     <div id="<%= dom_id read_run %>" class="list-group" style="margin: 0.5em 0;">
       <li class="list-group-item list-group-item-dark" aria-current="true">
         <div class="row">
           <div class="col-4">
-            <div class="input-group">
-              <%= form.number_field :run_number, class: "form-control", placeholder: "Run number" %>
+            <div class="form-group">
+              <%= form.number_field :run_number, class: "form-control #{is_field_invalid?(read_run, :run_number)}", placeholder: "Run number" %>
             </div>
           </div>
-          <div class="col-6">
-            <div class="input-group">
+          <div class="col-5">
+            <div class="form-group">
               <%= form.select :status, options_for_select(
                   ReadRun.statuses.map {|key, value| [key.humanize.capitalize, ReadRun.statuses.key(value)]}, read_run.status
                 ), {}, { class: "form-select" } %>
             </div>
           </div>
-          <div class="col-2 text-end">
+          <div class="col-3 text-end">
             <%= form.hidden_field :book_id, value: read_run.book_id %>
             <%= link_to "Cancel", :back, class: "btn btn-secondary btn-sm", data: { turbo_frame: "_top" } %>
             <%= form.submit "Create", class: "btn btn-success btn-sm" %>

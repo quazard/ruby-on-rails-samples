@@ -1,5 +1,5 @@
 <div id="actions">
-  <%= button_to "Add Read Run", new_read_run_path(book_id: read_runs.first.book), class: "btn btn-primary"%>
+  <%= button_to "Add Read Run", new_read_run_path(book_id: book.id), class: "btn btn-primary"%>
 </div>
 
 <%= turbo_frame_tag :read_runs do %>

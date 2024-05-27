@@ -9,11 +9,11 @@
     <%= link_to "Add Book", new_book_path, class: "btn btn-primary", data: { turbo_frame: "modal" } %>
   </div>
 
-  <turbo_frame id="books_frame">
+  <%= turbo_frame_tag "books_frame", data: { turbo: false } do %>
     <div id="books">
       <% @books.each do |book| %>
         <%= render partial: "books/book_card", locals: { book: book } %>
       <% end %>
     </div>
-  </turbo_frame>
+  <% end %>
 </div>
