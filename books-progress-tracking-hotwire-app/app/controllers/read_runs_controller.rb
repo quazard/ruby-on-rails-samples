@@ -60,7 +60,7 @@ class ReadRunsController < ApplicationController
     @read_run.destroy!
 
     respond_to do |format|
-      format.html { redirect_to read_runs_url, notice: "Read run was successfully destroyed." }
+      format.turbo_stream { render :destroy, locals: { read_run: @read_run } }
       format.json { head :no_content }
     end
   end

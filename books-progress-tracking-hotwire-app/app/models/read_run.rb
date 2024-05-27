@@ -5,4 +5,5 @@ class ReadRun < ApplicationRecord
   has_many :read_sessions, -> { order(:created_at => :desc) }
 
   validates :book, :status, :run_number, presence: true
+  validates :run_number, uniqueness: { scope: :book_id }
 end

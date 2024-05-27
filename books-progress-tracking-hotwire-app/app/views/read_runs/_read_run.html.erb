@@ -4,13 +4,18 @@
       <div class="col-2">
         Run: <%= read_run.run_number %>
       </div>
-      <div class="col-7">
+      <div class="col-6">
         <%= turbo_frame_tag "progress_#{dom_id read_run}" do %>
           <%= render partial: "read_runs/progress_bar", locals: { read_run: read_run, total_read_pages: total_read_pages } %>
         <% end %>
       </div>
       <div class="col-3 text-end">
         Status: <%= read_run.status.capitalize %>
+      </div>
+      <div class="col-1 text-end">
+        <%= button_to read_run_path(read_run), method: :delete, class: "btn btn-danger btn-sm" do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       </div>
     </div>
   </li>
