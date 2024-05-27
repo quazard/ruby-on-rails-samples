@@ -1,9 +1,9 @@
 <div id="actions">
-  <%= button_to "Add Read Run", new_read_run_path(book_id: book_id), class: "btn btn-primary"%>
+  <%= button_to "Add Read Run", new_read_run_path(book_id: read_runs.first.book), class: "btn btn-primary"%>
 </div>
 
-<turbo-frame id="read_runs">
+<%= turbo_frame_tag :read_runs do %>
   <% read_runs.each do |read_run| %>
     <%= render partial: "read_runs/read_run", locals: { read_run: read_run, total_read_pages: get_total_read_pages(read_run) } %>
   <% end %>
-</turbo-frame>
+<% end %>

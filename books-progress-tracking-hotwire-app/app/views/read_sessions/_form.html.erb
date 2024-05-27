@@ -9,6 +9,7 @@
         </div>
         <div class="col-6 text-end">
           <%= form.hidden_field :read_run_id, value: read_session.read_run_id %>
+          <%= link_to "Cancel", :back, class: "btn btn-secondary btn-sm", data: { turbo_frame: "_top" } %>
           <%= form.submit class: "btn btn-success btn-sm" %>
         </div>
       </div>
