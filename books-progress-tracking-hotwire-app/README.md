@@ -26,6 +26,7 @@ rails s
 ## Resources
 
 - [https://turbo.hotwired.dev/handbook/introduction](https://turbo.hotwired.dev/handbook/introduction)
+- [Hotrails.dev | Turbo Rails](https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams)
 - [Youtube | Deanin - Turbo Frame Pages in Ruby on Rails 7](https://www.youtube.com/watch?v=iwZDoz_Ya2k)
 - [Youtube | Mix & Go - Turbo Frames vs. Turbo Streams](https://www.youtube.com/watch?v=vnDWsGtzOCc)
 - [Youtube | Rapid Ruby - Hotwire Modals with ZERO JAVASCRIPT](https://www.youtube.com/watch?v=WK16FeBfbxI)
